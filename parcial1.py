@@ -1,7 +1,6 @@
 
 herramientas = []
 
-#TODO: Verificar que la carga de herramientas no sean nombres vacios ni duplicados.
 
 
 #Carga Inicial de Herramientas: Registrar los nombres de las herramientas que se pondrán a la venta.
@@ -33,13 +32,27 @@ while not eleccion == "8":
 
                 for i in range(int(cantidad_de_herramientas)):
 
-                    nombre_de_herramienta = input(f"Herramienta n°{contador} de {cantidad_de_herramientas}: ")
 
-                    #Verificar que carguen herramientas y no nombres vacios o duplicados
+                    herramienta_valida = False #si el usuario pone una entrada invalida, igual cuenta un ciclo en el for, este while es para solucionar eso
 
+                    while not herramienta_valida:
 
-                    contador += 1
-                    herramientas.append(nombre_de_herramienta)
+                        nombre_de_herramienta = input(f"Herramienta n°{contador} de {cantidad_de_herramientas}: ")
+                        
+                        #verificar que la entrada no sea duplicada ni vacia
+                        if nombre_de_herramienta == "" or nombre_de_herramienta.strip() == "": #strip() quita los espacios vacios al inicio y al final del string
+                            print("Nombre vacio, ingrese la herramienta")
+                            
+                        
+                        elif(nombre_de_herramienta in herramientas):
+                            print(f"{nombre_de_herramienta} ya fue agregada")
+                            
+                        
+                        else:
+
+                            contador += 1
+                            herramientas.append(nombre_de_herramienta)
+                            herramienta_valida = True
 
 
     #CARGA DE HERRAMIENTAS
