@@ -1,7 +1,7 @@
 
 herramientas = []
 
-
+#TODO hacer que la opcion 1 sea mas legible, no se entiende nada
 
 #Carga Inicial de Herramientas: Registrar los nombres de las herramientas que se pondrán a la venta.
 # Se debe preguntar al usuario la cantidad de herramientas a cargar y se debe usar una estructura pertinente. 
@@ -15,6 +15,7 @@ while not eleccion == "8":
 
 
 
+    #CARGA DE HERRAMIENTAS
     if eleccion == "1":
 
         validacion_cantidad_de_herramientas = False #Para mantener la usuario en un bucle hasta que ponga entradas válidas
@@ -38,7 +39,7 @@ while not eleccion == "8":
                     while not herramienta_valida:
 
                         nombre_de_herramienta = input(f"Herramienta n°{contador} de {cantidad_de_herramientas}: ")
-                        
+
                         #verificar que la entrada no sea duplicada ni vacia
                         if nombre_de_herramienta == "" or nombre_de_herramienta.strip() == "": #strip() quita los espacios vacios al inicio y al final del string
                             print("Nombre vacio, ingrese la herramienta")
@@ -55,7 +56,7 @@ while not eleccion == "8":
                             herramienta_valida = True
 
 
-    #CARGA DE HERRAMIENTAS
+
 
 
 
@@ -81,8 +82,14 @@ while not eleccion == "8":
     #Cuando el usuario ingresa existencias, el sistema debe mostrar por pantalla el nombre de la herramienta.
 
     #CARGA DE EXISTENCIAS
+    elif eleccion == "2":
 
-
+        #Me acabo de dar cuenta de que tengo que guardar las herramientas  y a la vez hacer que guarden relacion con otro valor
+        #que es el numero de existencias, quizas pueda hacer que las herramientas se guarden en forma de lista y que cada lista
+        #tenga 2 valores, el nombre y la cantidad
+        #la otra opcion son 2 listas y que se conecten herramientas y cantidades por el indice, pero entonces hay que tener cuidado 
+        #por si se borra una herramienta o varias, que mueven todos los indices
+        #no pienso trabajar con tuplas
 
 
 
