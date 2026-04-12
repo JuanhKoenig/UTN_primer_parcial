@@ -99,7 +99,7 @@ while not eleccion == "8":
             for i in range(len(herramientas)):
                 
 
-                stock_de_herramienta = "0"
+                stock_de_herramienta = ""
                 while not stock_de_herramienta:
                     stock_de_herramienta = input(f"Ingrse la cantidad de {herramientas[i]}: ")
 
@@ -237,6 +237,8 @@ while not eleccion == "8":
 
 
 
-
+print("\nRESUMEN DEL TESTEO\n")
 print(herramientas)
+for i in range(len(herramientas)):
+    print(f"{herramientas[i]} : {cantidades[i]}")
 print("FIN")

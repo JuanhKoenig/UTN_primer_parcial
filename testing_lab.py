@@ -1,3 +1,3 @@
-lista = []
+testing = ""
 
-print(bool(lista))#False
+print(bool(testing))#False
