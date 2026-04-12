@@ -169,7 +169,7 @@ while not eleccion == "8":
             print(f"herramienta: {buscar_herramienta}, Stock: {cantidades[herramientas.index(buscar_herramienta)]}")
 
         else:
-            print("\nno se encontro la herramienta\n")
+            print("\nno se encontró la herramienta\n")
 
 
 
