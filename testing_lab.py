@@ -1,3 +1,3 @@
-testin_number = input("numero: ")
+lista = []
 
-print(int(testin_number) * 2)
+print(bool(lista))#False

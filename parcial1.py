@@ -1,5 +1,6 @@
 
 herramientas = []
+cantidades = []
 
 #TODO hacer que la opcion 1 sea mas legible, no se entiende nada
 
@@ -90,6 +91,26 @@ while not eleccion == "8":
         #la otra opcion son 2 listas y que se conecten herramientas y cantidades por el indice, pero entonces hay que tener cuidado 
         #por si se borra una herramienta o varias, que mueven todos los indices
         #no pienso trabajar con tuplas
+
+        if not herramientas: #este if es true si la lista esta vacia, una lista vacia es False
+            print("No hay herramientas cargadas")
+        
+        else:
+            for i in range(len(herramientas)):
+                
+
+                stock_de_herramienta = "0"
+                while not stock_de_herramienta:
+                    stock_de_herramienta = input(f"Ingrse la cantidad de {herramientas[i]}: ")
+
+                    if not stock_de_herramienta.isdigit():
+                        print("Entrada invalida, use solo numeros")
+
+                    else:    
+                        cantidades.append(stock_de_herramienta)
+
+
+
 
 
 
