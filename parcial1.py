@@ -11,7 +11,7 @@ cantidades = []
 
 eleccion = "0"
 while not eleccion == "8":
-    eleccion = input("1)Carga de herramientas\n2)Carga de existencias\n3)Ver inventario\n4)Consulta de stock\n5)Agotados\n6)Nuevo producto\n7)Actualizar stock (compra/venta)\n8)Salir\n")
+    eleccion = input("\n1)Carga de herramientas\n2)Carga de existencias\n3)Ver inventario\n4)Consulta de stock\n5)Agotados\n6)Nuevo producto\n7)Actualizar stock (compra/venta)\n8)Salir\n")
 
 
 
@@ -104,10 +104,14 @@ while not eleccion == "8":
                     stock_de_herramienta = input(f"Ingrse la cantidad de {herramientas[i]}: ")
 
                     if not stock_de_herramienta.isdigit():
-                        print("Entrada invalida, use solo numeros")
+                        print("Entrada invalida, use solo numeros\n")
+                        stock_de_herramienta = ""
+
+                        
 
                     else:    
                         cantidades.append(stock_de_herramienta)
+
 
 
 
@@ -128,7 +132,11 @@ while not eleccion == "8":
 
     #VISUALIZACION DE INVENTARIO
 
-
+    elif eleccion == "3":
+        
+        print("\nInventario\n")
+        for i in range(len(herramientas)):
+            print(f"{herramientas[i]} : {cantidades[i]}\n")
 
 
 
@@ -154,6 +162,14 @@ while not eleccion == "8":
 
     #CONSULTA DE STOCK
 
+    if eleccion == "4":
+        buscar_herramienta = input("\nBuscar: ")
+
+        if buscar_herramienta in herramientas:
+            print(f"herramienta: {buscar_herramienta}, Stock: {cantidades[herramientas.index(buscar_herramienta)]}")
+
+        else:
+            print("\nno se encontro la herramienta\n")
 
 
 
