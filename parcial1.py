@@ -2,7 +2,8 @@
 herramientas = []
 cantidades = []
 
-#TODO hacer que la opcion 1 sea mas legible, no se entiende nada
+#TODO ver inventario antes de agregar herramientas o cantidades genera un error, arreglar esto
+#TODO no permitir numero en la carga de herramientas
 
 #Carga Inicial de Herramientas: Registrar los nombres de las herramientas que se pondrán a la venta.
 # Se debe preguntar al usuario la cantidad de herramientas a cargar y se debe usar una estructura pertinente. 
@@ -231,12 +232,12 @@ while not eleccion == "8":
             agregar_herramienta = input("Ingrese nueva herramienta: ")
 
             if (agregar_herramienta.isdigit()) or (agregar_herramienta == ""):
-                print("entrada invalida, volviendo al menu principal\n")
+                print("entrada invalida, solo se permiten letras. Volviendo al menu principal\n")
                 validar_agrear_herramienta = True
 
             elif(agregar_herramienta in herramientas):
                 validar_agrear_herramienta = True
-                print(f"{agregar_herramienta} ya está en la lista\nvolviendo al menu principal\n")
+                print(f"{agregar_herramienta} ya está en la lista.\nVolviendo al menu principal\n")
 
 
             #CARGA DE CANTIDAD DE NUEVA HERRAMIENTA
@@ -249,7 +250,7 @@ while not eleccion == "8":
                 if (cantidad_agregar_herramienta == "0") or (int(cantidad_agregar_herramienta) < 0):
                     
                     validacion_cantidad_de_herramientas = True
-                    print("Entrada invalida, volviendo al menu principal")
+                    print("Entrada invalida, no puede ser 0 ni negativo.\nVolviendo al menu principal")
                 
                 else:
                     cantidades.append(cantidad_agregar_herramienta)
