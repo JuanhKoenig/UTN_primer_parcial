@@ -134,7 +134,7 @@ while not eleccion == "8":
 
     elif eleccion == "3":
         
-        print("\nInventario\n")
+        print("\nINVENTARIO:\n")
         for i in range(len(herramientas)):
             print(f"{herramientas[i]} : {cantidades[i]}\n")
 
@@ -189,6 +189,16 @@ while not eleccion == "8":
     #Reporte de Agotados: Listar únicamente aquellos productos cuyo stock sea igual a cero.
 
     #REPORTA DE AGOTADOS
+
+    if eleccion == "5":
+
+        if "0" in cantidades:
+            print("\nAGOTADOS:\n")
+            for i in range(len(cantidades)):
+                if cantidades[i] == "0":
+                    print(f"{herramientas[i]}")
+
+        # else:
 
 
 
