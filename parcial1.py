@@ -240,9 +240,21 @@ while not eleccion == "8":
 
 
             #CARGA DE CANTIDAD DE NUEVA HERRAMIENTA
-            #Esto lo hago dentro de un if para no nestear varios ifs
+            #Esto lo hago dentro de un if porque de lo contrario se me anidad demasiados
 
-            
+            if validar_agrear_herramienta == False:
+
+                cantidad_agregar_herramienta = input("ingrese la cantidad: ")
+
+                if (cantidad_agregar_herramienta == "0") or (int(cantidad_agregar_herramienta) < 0):
+                    
+                    validacion_cantidad_de_herramientas = True
+                    print("Entrada invalida, volviendo al menu principal")
+                
+                else:
+                    cantidades.append(cantidad_agregar_herramienta)
+                    herramientas.append(agregar_herramienta)
+                    validacion_cantidad_de_herramientas = True
 
 
 
