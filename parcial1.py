@@ -223,9 +223,26 @@ while not eleccion == "8":
 
     #ALTA DE NUEVOS PRODUCTOS
 
+    if eleccion == "6":
+        
+        validar_agrear_herramienta = False
+        while not validar_agrear_herramienta:
+
+            agregar_herramienta = input("Ingrese nueva herramienta: ")
+
+            if (agregar_herramienta.isdigit()) or (agregar_herramienta == ""):
+                print("entrada invalida, volviendo al menu principal\n")
+                validar_agrear_herramienta = True
+
+            elif(agregar_herramienta in herramientas):
+                validar_agrear_herramienta = True
+                print(f"{agregar_herramienta} ya está en la lista\nvolviendo al menu principal\n")
 
 
+            #CARGA DE CANTIDAD DE NUEVA HERRAMIENTA
+            #Esto lo hago dentro de un if para no nestear varios ifs
 
+            
 
 
 
