@@ -6,6 +6,7 @@ cantidades = []
 #TODO no permitir numero en la carga de herramientas
 #TODO en el punto 6 si se pone una letra como cantidad, int(cantidad_agregar_herramienta) rompe el codigo porque las letras no son int
 #TODO poner mensaje en caso de consultar stock y que no hayan agotados
+#TODO convertir los tipos de datos de cantidades en int
 
 #Carga Inicial de Herramientas: Registrar los nombres de las herramientas que se pondrán a la venta.
 # Se debe preguntar al usuario la cantidad de herramientas a cargar y se debe usar una estructura pertinente. 
@@ -285,6 +286,9 @@ while not eleccion == "8":
 
             eleccion_compra_venta = input("1) Venta (-stock)\n2) Compra (+stock)\n")
 
+            #VENTA
+
+
             if not eleccion_compra_venta.isdigit():
                 print("Entrada invalida,  volviendo al menu principal")
                 validar_compra_venta = False
@@ -298,10 +302,21 @@ while not eleccion == "8":
                 herramienta_vendida = input("herramienta vendida: ")
 
                 if herramienta_vendida in herramientas:
-
                     cantidad_vendida = input(f"stock vendido ({herramienta_vendida}: )")
 
-                    if cantidad_vendida <= cantidades[herramientas.index(herramienta_vendida)]:
+                    if cantidad_vendida < cantidades[herramientas.index(herramienta_vendida)]:
+                        (cantidades[herramientas.index(herramienta_vendida)]) -= int(cantidad_vendida)
+                    
+                    elif cantidad_vendida == cantidades[herramientas.index(herramienta_vendida)]:
+                        del(cantidades[herramientas.index(herramienta_vendida)])
+                        del(herramientas[herramientas.index(herramienta_vendida)])
+                        validar_compra_venta = False
+
+                else:
+                    print("Herramienta no encontrada")
+                    validar_compra_venta = False
+
+
 
 
 

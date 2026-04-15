@@ -1,5 +1,9 @@
-testing = ["uno", "dos", "tres", "cuatro"]
+testing = ["1", "2", "3", "4"]
 
-testing_int = [1, 2, 3, 4]
 
-print(f"{testing[0]}, {testing_int[testing.index("uno")]}")
+int(testing[1]) - 1
+
+print((testing[1]))
+
+print(testing)
+
