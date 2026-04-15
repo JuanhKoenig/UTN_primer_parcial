@@ -4,6 +4,8 @@ cantidades = []
 
 #TODO ver inventario antes de agregar herramientas o cantidades genera un error, arreglar esto
 #TODO no permitir numero en la carga de herramientas
+#TODO en el punto 6 si se pone una letra como cantidad, int(cantidad_agregar_herramienta) rompe el codigo porque las letras no son int
+#TODO poner mensaje en caso de consultar stock y que no hayan agotados
 
 #Carga Inicial de Herramientas: Registrar los nombres de las herramientas que se pondrán a la venta.
 # Se debe preguntar al usuario la cantidad de herramientas a cargar y se debe usar una estructura pertinente. 
@@ -249,13 +251,14 @@ while not eleccion == "8":
 
                 if (cantidad_agregar_herramienta == "0") or (int(cantidad_agregar_herramienta) < 0):
                     
-                    validacion_cantidad_de_herramientas = True
+                    validar_agrear_herramienta = True
                     print("Entrada invalida, no puede ser 0 ni negativo.\nVolviendo al menu principal")
                 
                 else:
                     cantidades.append(cantidad_agregar_herramienta)
                     herramientas.append(agregar_herramienta)
-                    validacion_cantidad_de_herramientas = True
+                    validar_agrear_herramienta = True
+
 
 
 
@@ -270,12 +273,35 @@ while not eleccion == "8":
 
 
     #Actualización de Stock (Venta/Ingreso):
-    # o Venta: Disminuir el stock tras validar que hay unidades suficientes.
-    # o Ingreso: Aumentar el stock por reposición de mercadería.
+    # Venta: Disminuir el stock tras validar que hay unidades suficientes.
+    # Ingreso: Aumentar el stock por reposición de mercadería.
 
     #ACTUALIZAR STOCK
 
+    elif eleccion == "7":
+        
+        validar_compra_venta = True
+        while validar_compra_venta:
 
+            eleccion_compra_venta = input("1) Venta (-stock)\n2) Compra (+stock)\n")
+
+            if not eleccion_compra_venta.isdigit():
+                print("Entrada invalida,  volviendo al menu principal")
+                validar_compra_venta = False
+            
+            elif eleccion_compra_venta not in ("1", "2"):
+                print("Entrada fuera de rango, volviendo al menu principal")
+                validar_compra_venta = False
+
+            elif eleccion_compra_venta == "1":
+
+                herramienta_vendida = input("herramienta vendida: ")
+
+                if herramienta_vendida in herramientas:
+
+                    cantidad_vendida = input(f"stock vendido ({herramienta_vendida}: )")
+
+                    if cantidad_vendida <= cantidades[herramientas.index(herramienta_vendida)]:
 
 
 
