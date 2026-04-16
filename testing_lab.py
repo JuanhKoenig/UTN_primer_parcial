@@ -1,3 +1,5 @@
-testing = int(input("numero: "))
+testing = (input("numero: "))
+
+
 
 print(testing)
