@@ -310,7 +310,24 @@ while not eleccion == "8":
                         print(f"quedan {cantidades[herramientas.index(herramienta_vendida)]} {herramienta_vendida}")
                         break
 
+            
+            #COMPRA DE STOCK
 
+            if eleccion_compra_venta == "2":
+
+                herramienta_comprada = input("stock comprado: ")
+                if not herramienta_comprada in herramientas:
+
+                    print("Herramienta no cargada, volviendo al menu principal")
+                
+                else:
+                    cantidad_stock_comprado = input("cantidad de stock adquirido: ")
+
+                    if cantidad_stock_comprado.isdigit():
+
+                        cantidad_stock_comprado = int(cantidad_stock_comprado)
+                        cantidades[herramientas.index(herramienta_comprada)] += cantidad_stock_comprado
+                        print("TEST")
 
 
 
