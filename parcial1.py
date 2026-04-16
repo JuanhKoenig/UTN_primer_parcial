@@ -104,9 +104,9 @@ while not eleccion == "8":
 
                 stock_de_herramienta = ""
                 while not stock_de_herramienta:
-                    stock_de_herramienta = input(f"Ingrse la cantidad de {herramientas[i]}: ")
+                    stock_de_herramienta = int(input(f"Ingrse la cantidad de {herramientas[i]}: "))
 
-                    if not stock_de_herramienta.isdigit():
+                    if not stock_de_herramienta.is_integer():
                         print("Entrada invalida, use solo numeros\n")
                         stock_de_herramienta = ""
 
@@ -283,6 +283,7 @@ while not eleccion == "8":
         validar_compra_venta = True
         while validar_compra_venta:
 
+            #MENU DE COMPRA Y VENTA
             eleccion_compra_venta = input("1) Venta (-stock)\n2) Compra (+stock)\n")
 
             if not eleccion_compra_venta.isdigit():
@@ -293,15 +294,21 @@ while not eleccion == "8":
                 print("Entrada fuera de rango, volviendo al menu principal")
                 validar_compra_venta = False
 
+
+            #VENTA
             elif eleccion_compra_venta == "1":
 
                 herramienta_vendida = input("herramienta vendida: ")
 
                 if herramienta_vendida in herramientas:
+                    cantidad_vendida = int(input(f"stock vendido ({herramienta_vendida}): "))
 
-                    cantidad_vendida = input(f"stock vendido ({herramienta_vendida}: )")
 
                     if cantidad_vendida <= cantidades[herramientas.index(herramienta_vendida)]:
+
+                        cantidades[herramientas.index(herramienta_vendida)] -= cantidad_vendida
+                        print(f"quedan {cantidades[herramientas.index(herramienta_vendida)]} {herramienta_vendida}")
+                        break
 
 
 

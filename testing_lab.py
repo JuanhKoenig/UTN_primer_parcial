@@ -1,5 +1,6 @@
-testing = ["uno", "dos", "tres", "cuatro"]
+testing = ["1", "2", "3", "4"]
 
 testing_int = [1, 2, 3, 4]
+result = int(testing[1]) + int(testing[2])
 
-print(f"{testing[0]}, {testing_int[testing.index("uno")]}")
+print(testing_int[0].is_integer())
