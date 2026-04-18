@@ -3,10 +3,8 @@ herramientas = []
 cantidades = []
 carga_de_herramientas_inicial = False
 
-#Carga Inicial de Herramientas: Registrar los nombres de las herramientas que se pondrán a la venta.
-# Se debe preguntar al usuario la cantidad de herramientas a cargar y se debe usar una estructura pertinente. 
-# En caso de nombre vacío o duplicado se debe seguir pidiendo hasta que sea correcto respetando la cantidad de herramientas 
-# que el usuario indicó antes de la carga.
+
+
 
 eleccion = "0"
 while not eleccion == "8":
@@ -72,34 +70,9 @@ while not eleccion == "8":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #Carga de Existencias: Ingresar la cantidad de unidades para cada herramienta registrada previamente, respetando el orden de ingreso. 
-    #Cuando el usuario ingresa existencias, el sistema debe mostrar por pantalla el nombre de la herramienta.
-
     #CARGA DE EXISTENCIAS
     elif eleccion == "2":
 
-        #Me acabo de dar cuenta de que tengo que guardar las herramientas  y a la vez hacer que guarden relacion con otro valor
-        #que es el numero de existencias, quizas pueda hacer que las herramientas se guarden en forma de lista y que cada lista
-        #tenga 2 valores, el nombre y la cantidad
-        #la otra opcion son 2 listas y que se conecten herramientas y cantidades por el indice, pero entonces hay que tener cuidado 
-        #por si se borra una herramienta o varias, que mueven todos los indices
-        #no pienso trabajar con tuplas
 
         if not herramientas: #este if es true si la lista esta vacia, una lista vacia es False
             print("No hay herramientas cargadas")
@@ -128,20 +101,6 @@ while not eleccion == "8":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    #Visualización de Inventario: Mostrar el listado completo de herramientas junto a su stock actual.
-
     #VISUALIZACION DE INVENTARIO
 
     elif eleccion == "3":
@@ -157,24 +116,6 @@ while not eleccion == "8":
             print("faltan cargar herramientas y/o cantidades")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #Consulta de Stock (existencias): Buscar una herramienta por su nombre y mostrar cuántas unidades hay disponibles.
 
 
     #CONSULTA DE STOCK
@@ -198,19 +139,6 @@ while not eleccion == "8":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    #Reporte de Agotados: Listar únicamente aquellos productos cuyo stock sea igual a cero.
-
     #REPORTA DE AGOTADOS
 
     if eleccion == "5":
@@ -226,24 +154,6 @@ while not eleccion == "8":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #Alta de Nuevo Producto: Permitir agregar solo una nueva herramienta al final de las listas con su stock inicial. 
-    # En caso de nombre vacío, nombre duplicado o valor de existencia negativo se debe volver al menú principal 
-    # mostrando por pantalla el motivo
 
     #ALTA DE NUEVOS PRODUCTOS
 
@@ -264,7 +174,6 @@ while not eleccion == "8":
 
 
             #CARGA DE CANTIDAD DE NUEVA HERRAMIENTA
-            #Esto lo hago dentro de un if porque de lo contrario se me anidad demasiados
 
             if validar_agrear_herramienta == False:
 
@@ -288,20 +197,6 @@ while not eleccion == "8":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    #Actualización de Stock (Venta/Ingreso):
-    # Venta: Disminuir el stock tras validar que hay unidades suficientes.
-    # Ingreso: Aumentar el stock por reposición de mercadería.
 
     #ACTUALIZAR STOCK
 
@@ -335,6 +230,7 @@ while not eleccion == "8":
 
                     if not cantidad_vendida.isdigit():
                         print("Entrada invalida, solo se permiten numeros, volviendo al menu principal")
+                        validar_compra_venta = False
 
                     else:
                         cantidad_vendida = int(cantidad_vendida)
@@ -344,6 +240,7 @@ while not eleccion == "8":
                 else:
                     print("Herramienta no encontrada, volviendo al menu principal")
                     validar_compra_venta = False
+
 
                 while validar_cantidad_vendida:
 
