@@ -2,6 +2,7 @@
 herramientas = []
 cantidades = []
 carga_de_herramientas_inicial = False
+carga_de_cantidades_inicial = False
 
 
 
@@ -73,29 +74,32 @@ while not eleccion == "8":
     #CARGA DE EXISTENCIAS
     elif eleccion == "2":
 
+        if not carga_de_cantidades_inicial:
+            carga_de_cantidades_inicial = True
+            if not herramientas: #este if es true si la lista esta vacia, una lista vacia es False
+                print("No hay herramientas cargadas")
+            
+            else:
+                for i in range(len(herramientas)):
+                    
 
-        if not herramientas: #este if es true si la lista esta vacia, una lista vacia es False
-            print("No hay herramientas cargadas")
-        
+                    validacion_stock_de_herramienta = False
+                    while not validacion_stock_de_herramienta:
+
+                        stock_de_herramienta = (input(f"Ingrse la cantidad de {herramientas[i]}: "))
+
+
+                        if not stock_de_herramienta.isdigit():
+                            print("Entrada invalida, use solo numeros\n")
+
+                            
+
+                        else:    
+                            stock_de_herramienta = int(stock_de_herramienta)
+                            cantidades.append(stock_de_herramienta)
+                            validacion_stock_de_herramienta = True
         else:
-            for i in range(len(herramientas)):
-                
-
-                validacion_stock_de_herramienta = False
-                while not validacion_stock_de_herramienta:
-
-                    stock_de_herramienta = (input(f"Ingrse la cantidad de {herramientas[i]}: "))
-
-
-                    if not stock_de_herramienta.isdigit():
-                        print("Entrada invalida, use solo numeros\n")
-
-                        
-
-                    else:    
-                        stock_de_herramienta = int(stock_de_herramienta)
-                        cantidades.append(stock_de_herramienta)
-                        validacion_stock_de_herramienta = True
+            print("ya se cargaron las cantidades")
 
 
 
@@ -120,7 +124,7 @@ while not eleccion == "8":
 
     #CONSULTA DE STOCK
 
-    if eleccion == "4":
+    elif eleccion == "4":
 
         if not cantidades:
             print("no hay cantidades cargadas")
@@ -141,7 +145,7 @@ while not eleccion == "8":
 
     #REPORTA DE AGOTADOS
 
-    if eleccion == "5":
+    elif eleccion == "5":
 
         if 0 in cantidades:
             print("\nAGOTADOS:\n")
@@ -157,7 +161,7 @@ while not eleccion == "8":
 
     #ALTA DE NUEVOS PRODUCTOS
 
-    if eleccion == "6":
+    elif eleccion == "6":
         
         validar_agrear_herramienta = False
         while not validar_agrear_herramienta:
@@ -183,10 +187,10 @@ while not eleccion == "8":
                 if not cantidad_agregar_herramienta.isdigit():
                     print("Entrada invalida, solo use numeros por favor")
 
-                elif (cantidad_agregar_herramienta == "0") or (int(cantidad_agregar_herramienta) < 0):
+                elif (int(cantidad_agregar_herramienta) < 0):
                     
                     validar_agrear_herramienta = True
-                    print("Entrada invalida, no puede ser 0 ni negativo.\nVolviendo al menu principal")
+                    print("Entrada invalida, no puede ser negativo.\nVolviendo al menu principal")
                     
                 
                 else:
@@ -206,7 +210,7 @@ while not eleccion == "8":
         while validar_compra_venta:
 
             #MENU DE COMPRA Y VENTA
-            eleccion_compra_venta = input("1) Venta (-stock)\n2) Compra (+stock)\n")
+            eleccion_compra_venta = input("1) Venta (-stock)\n2) Compra (+stock)\n3) Salir\n")
 
             #VALIDACION
 
@@ -214,6 +218,12 @@ while not eleccion == "8":
                 print("Entrada invalida,  volviendo al menu principal")
                 validar_compra_venta = False
             
+
+            elif eleccion_compra_venta == "3":
+                print("volviendo al menu principal\n")
+                validar_compra_venta = False
+
+
             elif eleccion_compra_venta not in ("1", "2"):
                 print("Entrada fuera de rango, volviendo al menu principal")
                 validar_compra_venta = False
@@ -262,33 +272,20 @@ while not eleccion == "8":
                 herramienta_comprada = input("stock comprado: ")
                 if not herramienta_comprada in herramientas:
 
-                    print("Herramienta no cargada, volviendo al menu principal")
+                    print("Herramienta no cargada")
                 
                 else:
                     cantidad_stock_comprado = input("cantidad de stock adquirido: ")
 
-                    if cantidad_stock_comprado.isdigit():
+                    if cantidad_stock_comprado.isdigit() and int(cantidad_stock_comprado) != 0:
 
                         cantidad_stock_comprado = int(cantidad_stock_comprado)
                         cantidades[herramientas.index(herramienta_comprada)] += cantidad_stock_comprado
                         print("TEST")
+                        validar_compra_venta = False
 
 
+                    else:
+                        print("Entrada invalida, volviendo al menu principal")
+                        validar_compra_venta = False
 
-
-
-
-
-
-
-
-
-
-
-
-
-print("\nRESUMEN DEL TESTEO\n")
-print(herramientas)
-for i in range(len(herramientas)):
-    print(f"{herramientas[i]} : {cantidades[i]}")
-print("FIN")
