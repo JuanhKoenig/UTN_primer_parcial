@@ -1,6 +1,7 @@
 
 herramientas = []
 cantidades = []
+carga_de_herramientas_inicial = False
 
 #Carga Inicial de Herramientas: Registrar los nombres de las herramientas que se pondrán a la venta.
 # Se debe preguntar al usuario la cantidad de herramientas a cargar y se debe usar una estructura pertinente. 
@@ -17,46 +18,52 @@ while not eleccion == "8":
     #CARGA DE HERRAMIENTAS
     if eleccion == "1":
 
-        validacion_cantidad_de_herramientas = False #Para mantener la usuario en un bucle hasta que ponga entradas válidas
-        while not validacion_cantidad_de_herramientas:
+        if not carga_de_herramientas_inicial:
+            carga_de_herramientas_inicial = True
 
-            cantidad_de_herramientas = input("Cuantas herramientas va a cargar?\n")
+            validacion_cantidad_de_herramientas = False #Para mantener la usuario en un bucle hasta que ponga entradas válidas
+            while not validacion_cantidad_de_herramientas:
 
-            if not cantidad_de_herramientas.isdigit():
-                print("Opcion inválida, use solo numeros\n")
+                cantidad_de_herramientas = input("Cuantas herramientas va a cargar?\n")
 
-            else:
-                validacion_cantidad_de_herramientas = True #Para salir del bucle
+                if not cantidad_de_herramientas.isdigit():
+                    print("Opcion inválida, use solo numeros\n")
 
-                contador = 1 #esto es solo para contar el numero de herramientas en el input
+                else:
+                    validacion_cantidad_de_herramientas = True #Para salir del bucle
 
-                for i in range(int(cantidad_de_herramientas)):
+                    contador = 1 #esto es solo para contar el numero de herramientas en el input
+
+                    for i in range(int(cantidad_de_herramientas)):
 
 
-                    herramienta_valida = False #si el usuario pone una entrada invalida, igual cuenta un ciclo en el for, este while es para solucionar eso
+                        herramienta_valida = False #si el usuario pone una entrada invalida, igual cuenta un ciclo en el for, este while es para solucionar eso
 
-                    while not herramienta_valida:
+                        while not herramienta_valida:
 
-                        nombre_de_herramienta = input(f"Herramienta n°{contador} de {cantidad_de_herramientas}: ")
+                            nombre_de_herramienta = input(f"Herramienta n°{contador} de {cantidad_de_herramientas}: ")
 
-                        #verificar que la entrada no sea duplicada ni vacia
-                        if nombre_de_herramienta == "" or nombre_de_herramienta.strip() == "": #strip() quita los espacios vacios al inicio y al final del string
-                            print("Nombre vacio, ingrese la herramienta")
+                            #verificar que la entrada no sea duplicada ni vacia
+                            if nombre_de_herramienta == "" or nombre_de_herramienta.strip() == "": #strip() quita los espacios vacios al inicio y al final del string
+                                print("Nombre vacio, ingrese la herramienta")
+                                
                             
-                        
-                        elif not nombre_de_herramienta.isalpha():
-                            print("por favor solo use letras")
+                            elif not nombre_de_herramienta.isalpha():
+                                print("por favor solo use letras")
 
 
-                        elif(nombre_de_herramienta in herramientas):
-                            print(f"{nombre_de_herramienta} ya fue agregada")
+                            elif(nombre_de_herramienta in herramientas):
+                                print(f"{nombre_de_herramienta} ya fue agregada")
+                                
                             
-                        
-                        else:
+                            else:
 
-                            contador += 1
-                            herramientas.append(nombre_de_herramienta)
-                            herramienta_valida = True
+                                contador += 1
+                                herramientas.append(nombre_de_herramienta)
+                                herramienta_valida = True
+
+        else:
+            print("ya se han cargado herramientas.")
 
 
 
@@ -274,6 +281,7 @@ while not eleccion == "8":
                     
                 
                 else:
+                    cantidad_agregar_herramienta = int(cantidad_agregar_herramienta)
                     cantidades.append(cantidad_agregar_herramienta)
                     herramientas.append(agregar_herramienta)
                     validar_agrear_herramienta = True
@@ -341,8 +349,13 @@ while not eleccion == "8":
 
                     if cantidad_vendida <= int(cantidades[herramientas.index(herramienta_vendida)]):
 
-                        cantidades[herramientas.index(herramienta_vendida)] -= cantidad_vendida
+                        (cantidades[herramientas.index(herramienta_vendida)]) -= cantidad_vendida
                         print(f"quedan {cantidades[herramientas.index(herramienta_vendida)]} {herramienta_vendida}")
+                        validar_cantidad_vendida = False
+                    
+                    else:
+                        print("Stock insuficiente, volviendo al menu principal")
+                        validar_compra_venta = False
                         validar_cantidad_vendida = False
             
             #COMPRA DE STOCK

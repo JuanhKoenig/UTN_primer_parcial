@@ -1,4 +1,5 @@
-testing = []
+testing = "0"
 
+testing = int(testing)
 
-print(bool(testing))
+print(testing.is_integer())
