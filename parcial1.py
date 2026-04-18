@@ -281,7 +281,6 @@ while not eleccion == "8":
 
                         cantidad_stock_comprado = int(cantidad_stock_comprado)
                         cantidades[herramientas.index(herramienta_comprada)] += cantidad_stock_comprado
-                        print("TEST")
                         validar_compra_venta = False
 
 
