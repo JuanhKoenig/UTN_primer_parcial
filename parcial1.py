@@ -2,8 +2,6 @@
 herramientas = []
 cantidades = []
 
-#TODO no permitir numero en la carga de herramientas
-#TODO en el punto 6 si se pone una letra como cantidad, int(cantidad_agregar_herramienta) rompe el codigo porque las letras no son int
 #TODO poner mensaje en caso de consultar stock y que no hayan agotados
 #TODO convertir los tipos de datos de cantidades en int
 
@@ -261,10 +259,15 @@ while not eleccion == "8":
 
                 cantidad_agregar_herramienta = input("ingrese la cantidad: ")
 
-                if (cantidad_agregar_herramienta == "0") or (int(cantidad_agregar_herramienta) < 0):
+
+                if not cantidad_agregar_herramienta.isdigit():
+                    print("Entrada invalida, solo use numeros por favor")
+
+                elif (cantidad_agregar_herramienta == "0") or (int(cantidad_agregar_herramienta) < 0):
                     
                     validar_agrear_herramienta = True
                     print("Entrada invalida, no puede ser 0 ni negativo.\nVolviendo al menu principal")
+                    
                 
                 else:
                     cantidades.append(cantidad_agregar_herramienta)
