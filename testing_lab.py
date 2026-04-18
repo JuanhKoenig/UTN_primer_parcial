@@ -1,5 +1,4 @@
-testing = (input("numero: "))
+testing = []
 
 
-
-print(testing)
+print(bool(testing))
