@@ -49,6 +49,10 @@ while not eleccion == "8":
                             print("Nombre vacio, ingrese la herramienta")
                             
                         
+                        elif not nombre_de_herramienta.isalpha():
+                            print("por favor solo use letras")
+
+
                         elif(nombre_de_herramienta in herramientas):
                             print(f"{nombre_de_herramienta} ya fue agregada")
                             
