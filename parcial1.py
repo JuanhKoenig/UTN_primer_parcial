@@ -2,7 +2,6 @@
 herramientas = []
 cantidades = []
 
-#TODO ver inventario antes de agregar herramientas o cantidades genera un error, arreglar esto
 #TODO no permitir numero en la carga de herramientas
 #TODO en el punto 6 si se pone una letra como cantidad, int(cantidad_agregar_herramienta) rompe el codigo porque las letras no son int
 #TODO poner mensaje en caso de consultar stock y que no hayan agotados
@@ -103,18 +102,21 @@ while not eleccion == "8":
             for i in range(len(herramientas)):
                 
 
-                stock_de_herramienta = ""
-                while not stock_de_herramienta:
-                    stock_de_herramienta = int(input(f"Ingrse la cantidad de {herramientas[i]}: "))
+                validacion_stock_de_herramienta = False
+                while not validacion_stock_de_herramienta:
 
-                    if not stock_de_herramienta.is_integer():
+                    stock_de_herramienta = (input(f"Ingrse la cantidad de {herramientas[i]}: "))
+
+
+                    if not stock_de_herramienta.isdigit():
                         print("Entrada invalida, use solo numeros\n")
-                        stock_de_herramienta = ""
 
                         
 
                     else:    
+                        stock_de_herramienta = int(stock_de_herramienta)
                         cantidades.append(stock_de_herramienta)
+                        validacion_stock_de_herramienta = True
 
 
 
@@ -137,11 +139,16 @@ while not eleccion == "8":
     #VISUALIZACION DE INVENTARIO
 
     elif eleccion == "3":
-        
-        print("\nINVENTARIO:\n")
-        for i in range(len(herramientas)):
-            print(f"{herramientas[i]} : {cantidades[i]}\n")
 
+
+        if ((len(cantidades)) == (len(herramientas)) ):
+            
+            print("\nINVENTARIO:\n")
+            for i in range(len(herramientas)):
+                print(f"{herramientas[i]} : {cantidades[i]}\n")
+
+        else:
+            print("faltan cargar herramientas y/o cantidades")
 
 
 
